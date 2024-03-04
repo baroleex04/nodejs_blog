@@ -7,13 +7,14 @@
     "beautiful": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --inspect src/index.js",
-    "watch": "node-sass --watch src/resources/scss -o src/public/css"
+    "watch": "node-sass --watch src/resources/scss -o src/public/css",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/baroleex04/nodejs_blog.git"
   },
-            "keywords": [
+  "keywords": [
     "f8",
     "blog",
     "f8",
@@ -35,7 +36,7 @@
     "node-sass": "^9.0.0"
   },
   "devDependencies": {
-    "husky": "^9.0.11",
+    "husky": "^8.0.0",
     "lint-staged": "^15.2.2",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.0",
@@ -43,7 +44,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run beautiful"
+      "pre-commit": "lint-staged"
     }
   }
 }
