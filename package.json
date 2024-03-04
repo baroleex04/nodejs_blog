@@ -25,12 +25,12 @@
   "bugs": {
     "url": "https://github.com/baroleex04/nodejs_blog/issues"
   },
-  "homepage": "https://github.com/baroleex04/nodejs_blog#readme",
+  "homepage": "https://github.com/baroleex04/nodejs_blog",
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
   "husky": {
-              "hooks": {
+    "hooks": {
       "pre-commit": "lint-staged"
     }
   },
