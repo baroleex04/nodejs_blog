@@ -1,12 +1,29 @@
 <div class="mt-4">
     <div>
         <h3>Khóa học của tôi</h3>
-        <a href="/me/trash/courses">Thùng rác</a>
+        <a href="/me/trash/courses">Thùng rác ({{deleteCount}})</a>
+
+        <div class="mt-4 d-flex align-items-center">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+                <label class="form-check-label" for="checkbox-all">
+                    Chọn tất cả
+                </label>
+            </div>
+
+            <select class="form-control form-control-sm checkbox-select-all-options" id="">
+                <option>---- Hành động ----</option>
+                <option value="delete">Xóa</option>
+            </select>
+
+            <button class="btn btn-primary btn-sm disabled">Thực hiện</button>
+        </div>
     </div>
 
     <table class="table mt-4 btn-info">
         <thead>
             <tr>
+                <th scope="col">Chọn</th>
                 <th scope="col">#</th>
                 <th scope="col">Tên khóa học</th>
                 <th scope="col">Level</th>
@@ -16,6 +33,11 @@
         <tbody>
             {{#each courses}}
             <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="courseIds[]" value="{{this._id}}" id="flexCheckDefault">
+                    </div>
+                </td>
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.level}}</td>
@@ -60,7 +82,9 @@
 {{!-- Delete hidden form --}}
 <form method="post" name="delete-course-form"></form>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
+    var checkboxAll = $('#checkbox-all');
     const deleteCourseModal = document.getElementById('delete-course-modal')
     var courseId;
     var deleteForm = document.forms['delete-course-form'];
@@ -78,4 +102,9 @@
             deleteForm.submit();
         }
     }
+
+    // Checkboxall clicked
+    checkboxAll.change(function () {
+        console.log(Math.random());
+    })
 </script>
