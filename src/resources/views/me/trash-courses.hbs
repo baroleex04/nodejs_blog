@@ -22,8 +22,8 @@
                 <td>{{this.level}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="" class="btn btn-info btn-restore" data-bs-toggle="modal"
-                        data-bs-id="{{this._id}}" data-bs-target="#restore-course-modal">Khôi
+                    <a href="" class="btn btn-info btn-restore" data-bs-toggle="modal" data-bs-id="{{this._id}}"
+                        data-bs-target="#restore-course-modal">Khôi
                         phục</a>
                     <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-id="{{this._id}}"
                         data-bs-target="#delete-course-modal">Xóa vĩnh viễn</a>
@@ -83,38 +83,41 @@
 <form method="post" name="restore-course-form"></form>
 <form method="post" name="delete-course-form"></form>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-    const deleteCourseModal = document.getElementById('delete-course-modal')
-    const restoreCourseModal = document.getElementById('restore-course-modal')
-    var courseId;
-    var deleteForm = document.forms['delete-course-form'];
-    var restoreForm = document.forms['restore-course-form'];
-    if (deleteCourseModal) {
-        deleteCourseModal.addEventListener('show.bs.modal', event => {
-            const button = event.relatedTarget
-            courseId = button.getAttribute('data-bs-id')
-        })
+    document.addEventListener('DOMContentLoaded', () => {
+        const deleteCourseModal = document.getElementById('delete-course-modal')
+        const restoreCourseModal = document.getElementById('restore-course-modal')
+        var courseId;
+        var deleteForm = document.forms['delete-course-form'];
+        var restoreForm = document.forms['restore-course-form'];
+        if (deleteCourseModal) {
+            deleteCourseModal.addEventListener('show.bs.modal', event => {
+                const button = event.relatedTarget
+                courseId = button.getAttribute('data-bs-id')
+            })
 
-        var btnDeleteCourse = document.getElementById('btn-delete-course')
+            var btnDeleteCourse = document.getElementById('btn-delete-course')
 
-        // delete course button clicked
-        btnDeleteCourse.onclick = function () {
-            deleteForm.action = '/courses/' + courseId + '/force?_method=DELETE';
-            deleteForm.submit();
+            // delete course button clicked
+            btnDeleteCourse.onclick = function () {
+                deleteForm.action = '/courses/' + courseId + '/force?_method=DELETE';
+                deleteForm.submit();
+            }
         }
-    }
-    if (restoreCourseModal) {
-        restoreCourseModal.addEventListener('show.bs.modal', event => {
-            const button = event.relatedTarget
-            courseId = button.getAttribute('data-bs-id')
-        })
+        if (restoreCourseModal) {
+            restoreCourseModal.addEventListener('show.bs.modal', event => {
+                const button = event.relatedTarget
+                courseId = button.getAttribute('data-bs-id')
+            })
 
-        var btnRestoreCourse = document.getElementById('btn-restore-course')
+            var btnRestoreCourse = document.getElementById('btn-restore-course')
 
-        // delete course button clicked
-        btnRestoreCourse.onclick = function () {
-            restoreForm.action = '/courses/' + courseId + '/restore?_method=PATCH';
-            restoreForm.submit();
+            // delete course button clicked
+            btnRestoreCourse.onclick = function () {
+                restoreForm.action = '/courses/' + courseId + '/restore?_method=PATCH';
+                restoreForm.submit();
+            }
         }
-    }
+    });
 </script>
