@@ -94,11 +94,11 @@
     var deleteForm = document.forms['delete-course-form'];
     if (deleteCourseModal) {
         deleteCourseModal.addEventListener('show.bs.modal', event => {
-            const button = event.relatedTarget
-            courseId = button.getAttribute('data-bs-id')
+            const button = event.relatedTarget;
+            courseId = button.getAttribute('data-bs-id');
         })
 
-        var btnDeleteCourse = document.getElementById('btn-delete-course')
+        var btnDeleteCourse = document.getElementById('btn-delete-course');
 
         // delete course button clicked
         btnDeleteCourse.onclick = function () {
